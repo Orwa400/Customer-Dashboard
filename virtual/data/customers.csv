@@ -1,1 +1,6 @@
 CustomerID,Name,Age,Gender,Country,PurchaseAmount,SignupDate
+1,John Doe,34,Male,USA,1200,2025-01-05
+2,Jane Smith,28,Female,UK,980,2024-07-23
+3,Mike Brown,45,Male,Canada,450,2023-03-11
+4,Lisa White,38,Female,Australia,670,2022-11-05
+5,Leo Messi,34,male,Kenya,890,2021-12-19
