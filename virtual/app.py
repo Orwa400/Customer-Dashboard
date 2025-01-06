@@ -44,3 +44,25 @@ fig_purchase = px.bar(
     x="Country", y="Total Purchase Amount", title="Purchase Amount by Country"
 )
 st.plotly_chart(fig_purchase) # Display the Plotly bar chart in the Streamlit app.
+
+# Sign up trend over time
+# Display a line chart showing the trend of customer signups over time, grouped by month
+# The data is resampled to aggregate the number of signups monthly, and the result is visualized
+st.markdown("### SIgnup Trend")
+fig_signup = px.line(
+    filtered_data.resample("M", on="SignupDate").size().reset_index(name="Signups"),
+    x="SignupDate", y=Signups, title="Signups Over Time"
+)
+st.plotly_chart(fig_signup)  # Render the line chart in the Streamlit app
+
+# Download filtered data
+st.subheader("Download Filtered Data")
+csv = filtered_data.to_csv(index=False) # Convert the filtered data to a CSV format string without including the index
+st.download_button(
+    label="Download CSV",
+    data= csv,
+    file_name="filtered_customer.csv",
+    mime="text/csv",
+)
+
+    
