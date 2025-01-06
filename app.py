@@ -1,11 +1,11 @@
-import streanlit as st # Create web app with python
+import streamlit as st # Create web app with python
 import pandas as pd # For data manipulation and analysis
 import plotly.express as px # Create interactive visualizations
 
 # load data
-@st.cache
+@st.cache_data
 def load_data():
-    return pd.read_csv("data/customers.csv", parse_dates=["SignupDate"])
+    return pd.read_csv("virtual/data/customers.csv", parse_dates=["SignupDate"])
 
 data = load_data()
 
@@ -38,10 +38,10 @@ st.plotly_chart(fig_age)  # Display the Plotly chart in the Streamlit app.
 
 # Purchase amount by country
 # This section generates a bar chart to show the total purchase amount for each country in the filtered dataset.
-st.markdown("### Purchsse Amount by Country")
+st.markdown("### Purchase Amount by Country")
 fig_purchase = px.bar(
-    filtered_data.groupby("Country")["PurchaseAmount"].sum().reset_index(name="Signups"),
-    x="Country", y="Total Purchase Amount", title="Purchase Amount by Country"
+    filtered_data.groupby("Country")["PurchaseAmount"].sum().reset_index(name="Total Purchase Amount"),
+    x="Country", y="Total Purchase Amount", title="Total Purchase Amount by Country"
 )
 st.plotly_chart(fig_purchase) # Display the Plotly bar chart in the Streamlit app.
 
@@ -50,8 +50,8 @@ st.plotly_chart(fig_purchase) # Display the Plotly bar chart in the Streamlit ap
 # The data is resampled to aggregate the number of signups monthly, and the result is visualized
 st.markdown("### SIgnup Trend")
 fig_signup = px.line(
-    filtered_data.resample("M", on="SignupDate").size().reset_index(name="Signups"),
-    x="SignupDate", y=Signups, title="Signups Over Time"
+    filtered_data.resample("ME", on="SignupDate").size().reset_index(name="Signups"),
+    x="SignupDate", y="Signups", title="Signups Over Time"
 )
 st.plotly_chart(fig_signup)  # Render the line chart in the Streamlit app
 
