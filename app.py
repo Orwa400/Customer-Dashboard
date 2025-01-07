@@ -43,6 +43,8 @@ fig_purchase = px.bar(
     filtered_data.groupby("Country")["PurchaseAmount"].sum().reset_index(name="Total Purchase Amount"),
     x="Country", y="Total Purchase Amount", title="Total Purchase Amount by Country"
 )
+avg_purchase = filtered_data["PurchaseAmount"].mean()
+st.metric("Average Purchase Amount", avg_purchase)
 st.plotly_chart(fig_purchase) # Display the Plotly bar chart in the Streamlit app.
 
 # Sign up trend over time
@@ -53,7 +55,10 @@ fig_signup = px.line(
     filtered_data.resample("ME", on="SignupDate").size().reset_index(name="Signups"),
     x="SignupDate", y="Signups", title="Signups Over Time"
 )
+total_signups = len(filtered_data)
+st.metric("Total Signups", total_signups)
 st.plotly_chart(fig_signup)  # Render the line chart in the Streamlit app
+
 
 # Download filtered data
 st.subheader("Download Filtered Data")
