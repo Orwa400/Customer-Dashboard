@@ -51,5 +51,8 @@ Gender: The gender of the customer.
 Age: The age of the customer.
 PurchaseAmount: The total amount spent by the customer.
 
+Checkout the live app here 
+[![Streamlit App](https://img.shields.io/badge/Streamlit-Live%20Demo-brightgreen)]([https://your-app-url](https://customer-dashboard.streamlit.app/))
+
 
 
